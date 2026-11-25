@@ -1,0 +1,1016 @@
+/* ===================================================
+   KEDAI KOPI — style.css
+   Palet: Dark Coffee #4B2818 | Warm Cream #F8F0E5 | Caramel #A46C3C
+   Font : Poppins (Google Fonts)
+   Pendekatan: Mobile-first
+   =================================================== */
+
+/* ---------- 0. IMPORT FONT ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+
+/* ---------- 1. RESET & BOX MODEL ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- 2. VARIABEL PALET & TOKEN DESAIN ---------- */
+:root {
+  --dark-coffee: #4B2818;
+  --warm-cream:  #F8F0E5;
+  --caramel:     #A46C3C;
+  --white:       #ffffff;
+
+  --surface-card:      #FCF6EC;
+  --surface-form-card: #F3E6D6;
+  --surface-input:     #FFFDF9;
+  --text-muted:        rgba(75, 40, 24, 0.78);
+  --badge-cream:       rgba(164, 108, 60, 0.22);
+  --border-soft:       rgba(164, 108, 60, 0.20);
+
+  --shadow-sm:   0 4px 16px rgba(75, 40, 24, 0.09);
+  --shadow-md:   0 12px 30px rgba(75, 40, 24, 0.12);
+  --shadow-lg:   0 16px 38px rgba(75, 40, 24, 0.16);
+
+  --radius-sm:   10px;
+  --radius-md:   18px;
+  --radius-lg:   24px;
+  --radius-pill: 50px;
+  --transition:  0.28s ease;
+  --max-width:   1000px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--dark-coffee);
+  background-color: var(--warm-cream);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(164, 108, 60, 0.13) 0%, transparent 46%),
+    radial-gradient(circle at 88% 34%, rgba(164, 108, 60, 0.10) 0%, transparent 44%),
+    radial-gradient(circle at 50% 85%, rgba(164, 108, 60, 0.08) 0%, transparent 50%);
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ---------- 3. CONTAINER ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ---------- 4. HEADER / NAV ---------- */
+.site-header {
+  background-color: rgba(248, 240, 229, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(164, 108, 60, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding-block: 0.85rem;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: transform var(--transition);
+}
+
+.nav-logo:hover {
+  transform: scale(1.03);
+}
+
+.nav-logo img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.nav-links a {
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--dark-coffee);
+  padding: 0.45rem 1.3rem;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.nav-links a:hover {
+  background-color: var(--caramel);
+  color: var(--white);
+}
+
+.nav-links a[aria-current="page"] {
+  background-color: var(--dark-coffee);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.nav-links a[aria-current="page"]:hover {
+  background-color: var(--dark-coffee);
+}
+
+/* ---------- 5. BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.85rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--dark-coffee);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--caramel);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- 6. FOOTER ---------- */
+.site-footer {
+  margin-top: auto;
+  padding-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.footer-card {
+  filter: drop-shadow(0 10px 24px rgba(75, 40, 24, 0.14));
+}
+
+.footer-wave {
+  width: 100%;
+  height: 36px;
+  color: var(--dark-coffee);
+  margin-bottom: -2px;
+}
+
+.footer-wave-accent {
+  color: var(--caramel);
+  opacity: 0.38;
+}
+
+.footer-body {
+  background-color: var(--dark-coffee);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: 0.35rem 1.35rem 1.15rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo-img {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: var(--surface-card);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+}
+
+.footer-divider {
+  display: none;
+}
+
+.footer-social h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--warm-cream);
+  margin-bottom: 0.5rem;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--warm-cream);
+  color: var(--dark-coffee);
+  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.social-icon:hover {
+  background-color: var(--caramel);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.footer-tagline-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.footer-tagline-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--warm-cream);
+}
+
+.footer-swash {
+  width: 148px;
+  height: 10px;
+  color: rgba(248, 240, 229, 0.65);
+}
+
+.footer-copy {
+  margin-top: 0.65rem;
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(248, 240, 229, 0.55);
+}
+
+/* =====================================================
+   HALAMAN BERANDA (index.html)
+   ===================================================== */
+
+/* --- 7. HERO SECTION --- */
+.hero {
+  padding-block: 1.75rem 1.5rem;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  color: var(--dark-coffee);
+  margin-bottom: 0.25rem;
+}
+
+.hero-title {
+  font-size: clamp(2.45rem, 7vw, 3.85rem);
+  font-weight: 800;
+  color: var(--dark-coffee);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.hero-tagline {
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--caramel);
+  margin-bottom: 1rem;
+}
+
+.hero-desc {
+  font-size: 1.04rem;
+  color: var(--text-muted);
+  max-width: 38ch;
+  margin-bottom: 1.65rem;
+}
+
+.hero-image-wrap {
+  width: 100%;
+  max-width: 440px;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  object-position: 78% center;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- 8. JAM BUKA SECTION --- */
+.jam-buka {
+  padding-block: 0.75rem 2.25rem;
+}
+
+.jam-buka-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1.65rem 1.4rem;
+}
+
+.jam-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark-coffee);
+}
+
+.jam-card-header svg {
+  width: 30px;
+  height: 30px;
+}
+
+.jam-card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dark-coffee);
+}
+
+.jam-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.jam-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.jam-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--dark-coffee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.jam-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.jam-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-coffee);
+  margin-bottom: 0.15rem;
+}
+
+.jam-value {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.jam-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(164, 108, 60, 0.24);
+}
+
+.jam-holiday {
+  margin-top: 1.35rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(164, 108, 60, 0.30);
+  text-align: center;
+  font-size: 0.98rem;
+  color: var(--text-muted);
+}
+
+.jam-holiday strong {
+  color: var(--dark-coffee);
+  font-weight: 600;
+}
+
+/* --- 9. KEUNGGULAN SECTION --- */
+.keunggulan {
+  padding-block: 1rem 3rem;
+}
+
+.keunggulan-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  font-size: clamp(1.45rem, 3.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--dark-coffee);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.keunggulan-title::before,
+.keunggulan-title::after {
+  content: '';
+  flex: 1;
+  max-width: 130px;
+  height: 1px;
+  background-color: rgba(75, 40, 24, 0.28);
+}
+
+.keunggulan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+}
+
+.keunggulan-item {
+  text-align: center;
+  padding: 0.5rem 0.25rem;
+}
+
+.keunggulan-badge {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: var(--badge-cream);
+  color: var(--dark-coffee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.9rem;
+  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.keunggulan-badge svg {
+  width: 32px;
+  height: 32px;
+}
+
+.keunggulan-item:hover .keunggulan-badge {
+  background-color: var(--caramel);
+  color: var(--white);
+  transform: translateY(-4px);
+}
+
+.keunggulan-item h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--dark-coffee);
+  line-height: 1.35;
+}
+
+/* =====================================================
+   HALAMAN MENU (menu.html)
+   ===================================================== */
+
+/* --- 10. MENU PAGE HEADER --- */
+.menu-page-header {
+  text-align: center;
+  padding-block: 2rem 1rem;
+}
+
+.menu-page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  font-size: clamp(1.85rem, 5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--dark-coffee);
+  margin-bottom: 0.4rem;
+}
+
+.menu-page-title::before,
+.menu-page-title::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background-color: rgba(75, 40, 24, 0.28);
+}
+
+.menu-page-subtitle {
+  font-size: 1.04rem;
+  color: var(--text-muted);
+}
+
+/* --- 11. KATEGORI MENU --- */
+.menu-category {
+  padding-block: 1.35rem;
+}
+
+.menu-category:last-of-type {
+  padding-bottom: 3rem;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark-coffee);
+  margin-bottom: 1.15rem;
+}
+
+/* --- 12. MENU GRID (mobile-first) --- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+}
+
+/* --- 13. MENU CARD --- */
+.menu-card {
+  background-color: var(--surface-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  padding: 0.75rem 0.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.menu-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.95rem;
+}
+
+.menu-card-img--tea {
+  object-position: center 68%;
+}
+
+.menu-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 0.4rem;
+}
+
+.menu-card-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark-coffee);
+  margin-bottom: 0.35rem;
+}
+
+.menu-card-desc {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+  max-width: 28ch;
+  margin-bottom: 1rem;
+}
+
+.menu-card-price {
+  display: inline-block;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--white);
+  background-color: var(--dark-coffee);
+  padding: 0.4rem 1.3rem;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition);
+}
+
+.menu-card:hover .menu-card-price {
+  background-color: var(--caramel);
+}
+
+/* =====================================================
+   HALAMAN PESAN (pesan.html)
+   ===================================================== */
+
+/* --- 14. PESAN PAGE LAYOUT --- */
+.pesan-section {
+  padding-block: 2rem 3rem;
+}
+
+.pesan-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pesan-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+}
+
+.pesan-left-title {
+  font-size: clamp(1.85rem, 5vw, 2.45rem);
+  font-weight: 800;
+  color: var(--dark-coffee);
+  line-height: 1.15;
+  margin-bottom: 0.45rem;
+}
+
+.pesan-left-desc {
+  font-size: 1.06rem;
+  color: var(--text-muted);
+  max-width: 30ch;
+  margin-bottom: 1.5rem;
+}
+
+.pesan-left-img {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.pesan-right {
+  width: 100%;
+  min-width: 0;
+}
+
+/* --- 15. FORM CARD --- */
+.form-card {
+  background-color: var(--surface-form-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1.65rem 1.35rem;
+}
+
+/* --- 16. FORM ELEMENTS --- */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.15rem;
+  min-width: 0;
+}
+
+.form-group label,
+.form-fieldset legend {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark-coffee);
+  margin-bottom: 0.45rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid rgba(164, 108, 60, 0.30);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.96rem;
+  color: var(--dark-coffee);
+  background-color: var(--surface-input);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(75, 40, 24, 0.45);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--caramel);
+  box-shadow: 0 0 0 3px rgba(164, 108, 60, 0.22);
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%234B2818' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  padding-right: 2.5rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 92px;
+}
+
+/* --- 17. FIELDSET (Cara Ambil) --- */
+.form-fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 1.15rem;
+  background: transparent;
+  min-width: 0;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.25rem;
+  min-height: 44px;
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.96rem;
+  color: var(--dark-coffee);
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: var(--dark-coffee);
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+/* --- 18. SUBMIT BUTTON --- */
+.btn-submit {
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  background-color: var(--dark-coffee);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  margin-top: 0.35rem;
+}
+
+.btn-submit:hover {
+  background-color: var(--caramel);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+/* =====================================================
+   MEDIA QUERIES — TABLET (min-width: 600px)
+   ===================================================== */
+@media (min-width: 600px) {
+  .container {
+    padding-inline: 1.5rem;
+  }
+
+  /* NAV */
+  .nav-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-logo img {
+    width: 76px;
+    height: 76px;
+  }
+
+  /* HERO */
+  .hero-inner {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 2.25rem;
+  }
+
+  .hero-content {
+    flex: 1;
+    align-items: flex-start;
+  }
+
+  .hero-image-wrap {
+    flex: 1;
+    max-width: 440px;
+  }
+
+  /* JAM BUKA */
+  .jam-buka-card {
+    padding: 1.85rem 2rem;
+  }
+
+  .jam-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .jam-item {
+    flex: 1;
+    justify-content: center;
+    padding-inline: 0.85rem;
+  }
+
+  .jam-divider {
+    width: 1px;
+    height: 54px;
+    flex-shrink: 0;
+  }
+
+  /* KEUNGGULAN */
+  .keunggulan-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* MENU GRID — 2 kolom */
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* PESAN — 2 kolom input di tablet */
+  .form-card {
+    padding: 2rem 2.15rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* FOOTER */
+  .footer-wave {
+    height: 62px;
+  }
+
+  .footer-body {
+    padding: 0 2.25rem 1.05rem;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.75rem;
+    margin-top: -16px;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+  }
+
+  .footer-divider {
+    display: block;
+    width: 1px;
+    height: 54px;
+    background-color: rgba(248, 240, 229, 0.42);
+  }
+
+  .footer-tagline-box {
+    margin-left: auto;
+    align-items: flex-end;
+    transform: rotate(-3.5deg);
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+  }
+}
+
+/* =====================================================
+   MEDIA QUERIES — DESKTOP (min-width: 960px)
+   ===================================================== */
+@media (min-width: 960px) {
+  .hero {
+    padding-block: 2.25rem 1.75rem;
+  }
+
+  .hero-image-wrap {
+    max-width: 470px;
+  }
+
+  /* MENU GRID — 3 kolom */
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* PESAN — 2 kolom halaman pada desktop */
+  .pesan-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .pesan-left {
+    flex: 0.9;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pesan-right {
+    flex: 1.25;
+  }
+}
